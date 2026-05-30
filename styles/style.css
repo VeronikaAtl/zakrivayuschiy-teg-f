@@ -10,7 +10,372 @@
 
 */
 
+@supports (font-variation-settings: normal) {
+  .page {
+    font-family: var(--variable-font), sans-serif;
+  }
+}
+
 .page {
+  padding-top: 100px;
+  padding-bottom: 100px;
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-family: var(--variable-font, 'Inter-Variable'), Arial, sans-serif;
+  font-variation-settings: 'wght' var(--font-weight-main);
+  font-size: var(--font-size-page);
+  background-image: var(--background-image); /*фон из градиента*/
+  background-size: cover; /*фон из градиентов занимает всё пространство страницы*/
+  min-height: 100vh; /*на случай, если при малом количестве контента фон не растягивается на всю страницу*/
+  margin: 0; /*убирает стандартные отступы от браузера*/
+  background-attachment: fixed; /*фиксированный фон*/
+}
+
+/*Доработка шапки*/
+
+.block-width { /*ширина блока*/
+  width: var(--block-width);
+}
+
+.header { /*весь хэдер*/
+  margin: 0 auto; /* центрируем блок по горизонтали*/
+  box-sizing: border-box;
+  display: grid;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fallback-font), Arial, sans-serif;
+  font-weight: var(--font-weight-main);
+  background-color: var(--background-color);
+  border: var(--border);
+  padding-top: var(--padding-header);
+  padding-bottom: var(--padding-header);
+  margin-bottom: 97px;
+}
+
+.header-logo {
+  font-size: var(--font-size-header-logo);
+  vertical-align: bottom;
+  text-transform:  var(--text-transform-header);
+}
+
+.header-title {
+  font-size: var(--font-size-header-title);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/*лейблы на карточки*/
+.label-html {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  font-family: var(--fallback-font), Arial, sans-serif;
+  font-weight: var( --font-weight-fallback-font);
+  font-size: var(--font-size-fallback-font);
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-transform: uppercase;
+  opacity: 0.5;
+  mix-blend-mode: hard-light;
+  text-shadow:
+  -1px 0 var(--outline-color), 
+  0 1px var(--outline-color), 
+  1px 0 var(--outline-color), 
+  0 -1px var(--outline-color);
+}
+
+@supports((text-stroke: 1px var(--outline-color)) or (-webkit-text-stroke: 1px var(--outline-color))) {
+  .watermark {
+    -webkit-text-stroke: 1px var(--outline-color);
+    text-stroke: 1px var(--outline-color);
+    text-shadow: none;
+  }
+} 
+
+.section__grid {
+  display: grid;
+  gap: 25px;
+  background-color: var(--background-color);
+  border: var(--border);
+  padding: 25px 25px 25px 25px;
+
+}
+
+/*карточки*/
+.article-grid {
+  display: grid;
+  gap: var(--grid-gap-cards);
+}
+
+.card-title {
+  background-color: var(--background-color);
+  border: var(--border);
+  padding: 6px 12px 6px 12px; /*совпадает*/
+  font-variation-settings: 'wght' var(--font-weight-title, 715);
+  font-size: var( --font-size-card);
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.card-text{
+  font-family: var(--variable-font), Arial, sans-serif;
+  font-weight: 410;
+  font-size: 18px;
+  line-height:  1.167;
+  letter-spacing: normal;
+
+
+}
+
+.cards {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.card-content {
+ display: grid;
+ gap: 25px; /*совпадает*/
+}
+
+.card-image {
+  display: block;
+  object-position: center center; /*горизонтальное и вертикальное позиционирование*/
+  object-fit: cover; /*изображение полностью покрывает контейнер*/
+  width: 100%;
+  aspect-ratio: 1 / 1; /*соотношение сторон*/
+}
+
+.text-img {
+  border: var(--border);
+  border-top: 0;
+  border-bottom: 0;
+  position: relative;
+}
+
+.buttons {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: end;
+  gap: 5px;
+}
+
+.card__icon-button {
+  border: 2px solid transparent; /*прозрачная граница для кнопки*/
+  background-color: var(--background-color);
+  transition: border-color 0.3s ease; /*плавный переход границы при появлении и при исчезновении */
+  height: 38px;
+  padding: 0px;
+}
+.card__like-button { /*кнопка Like*/
+  background-color: var(--background-color);
+  border: var(--border);
+  width: 130px;
+}
+
+.at-the-moment {
+  margin-bottom: 50px;
+}
+
+.button__text {
+  font-family: var(--fallback-font), Arial, sans-serif;
+  font-size: var(--font-size-fallback-font);
+  font-weight: var(--font-weight-fallback-font);
+  font-size: var(--font-size-fallback-font);
+  line-height: 90%;
+  letter-spacing: 0%;
+}
+
+.save-button { /*кнопка "сохранить на память"*/
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  background-color: var(--background-color);
+  border: var(--border);
+  padding: 16.5px 17px 13.5px 17px;
+  gap: 8px;
+  margin: 0 auto;
+ 
+}
+
+.floppy {
+  width: 21px;
+  height: 21px;
+}
+
+/*всплывающее окно*/
+dialog:not([open]) {
+  pointer-events: none;
+  opacity: 0;
+  position: fixed;
+  inset: 0;
+}
+
+dialog::backdrop { 
+  -webkit-backdrop-filter: brightness(25%);
+  backdrop-filter: brightness(25%);
+} 
+
+.dialog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding: 28px;
+  max-width: 353px;
+
+}
+
+.section-dialog {
+  display: flex;
+  gap: 20px;
+  height: 63px;
+
+}
+
+.text-dialog {
+  font-family: var(--fallback-font), Arial, sans-serif;
+  font-weight: var(--font-weight-fallback-font);
+  font-size: var(--font-size-fallback-font);
+  line-height: 1.5;
+  text-wrap: wrap;
+  letter-spacing: 0%;
+  text-transform: var(--text-transform-dialog);
+  height: 100%;
+ }
+
+.dialog-button { /*кнопка Ок*/
+  width: 100%;
+  align-items: center;
+  block-size: 38px;
+  padding: 10.5px 130.5px 10.5px 130.5px;
+  border: var(--outline-button);
+  background-color: var(--background-color);
+}
+
+
+/*Фильтры карточек*/
+.filter-contrast-saturate { /*первая карточка*/
+  filter: contrast(150%) saturate(100%);
+} 
+.filter-grayscale  { /*вторая карточка*/
+  filter: grayscale(0.8);
+}
+
+.filter-saturate {
+  filter: saturate(300%); /*третья карточка*/
+}
+
+.filter-blur-invert { /*четвёртая карточка*/
+filter: blur(0.2rem)  invert(0.7);
+}
+
+.filter-hue-rotate { /*пятая карточка*/
+  filter: hue-rotate(0.3turn);
+}
+
+.filter-sepia { /*шестая карточка*/
+  filter: sepia(80%);
+}
+
+.filter-opacity { /*седьмая карточка*/
+   filter: opacity(0.8);
+}
+
+.filter-mix { /*восьмая карточка*/
+filter: sepia(0.5) contrast(2) brightness(100%);
+}
+
+
+/*Кнопки Like, «Сохранить на память» и «ОК»*/
+.button {
+  transition: box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--background-color);
+  transition: transform 0.5s ease-in-out, box-shadow 0.3s ease;
+  background-color: white;
+}
+
+.button:focus {
+  outline: none; /*отменили стандартную обводку*/
+  box-shadow: 2px 2px 0px var(--accent-color); /*добавили тень блока*/
+  
+}
+
+
+
+        /*создание псевдоэлемента*/
+.button::before {
+  content: '';
+  position: absolute;
+  inset: 0; /*заполняет всю площадь родительского элемента*/
+  background-color: var(--accent-color);
+  transform: scaleX(0); /*скрывает элемент изначально*/
+  transition: transform 0.5s ease-in-out;
+  transform-origin: left;
+}
+
+.button:hover::before {
+  transform: scaleX(1); /* псевдоэлемент плавно увеличивается до нормальных размеров*/
+}
+
+/*изменение цвета текста и дискеты при движении псевдоэлемента*/
+
+.button__text,
+.floppy {
+  position: relative;
+  z-index: 1;
+  color: white; 
+  mix-blend-mode: difference;
+}
+
+         /*Фокус на кнопке с сердцем*/
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  border-color: var(--accent-color);
+}
+
+
+@media (width <= 376px) {
+    .page {
+    max-inline-size: 700px;
+  }
+
+   .save-button {
+  display: grid;
+  justify-content: center; 
+  align-items: center;
+  padding: 17px 20px 17px 20px;
+  gap: 8px;
+  margin: 0 auto;
+  block-size: 85px;
+}
+
+.card-title-about-zero-sprint {
+  min-height: 55px;
+  line-height: 22px;
+}
+
+.floppy {
+  display: flex;
+  justify-self: center;
+  width: 30px;
+  height: 30px;
+}
+
+ .dialog {
+    padding-inline-start: 32px;
+    padding-inline-end: 32px;
+  }
+
+  .dialog-button {
+    min-inline-size: 293px;
+  }
 }
