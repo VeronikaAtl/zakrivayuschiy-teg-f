@@ -66,7 +66,7 @@
 }
 
 /*лейблы на карточки*/
-.label-html {
+.span-html {
   position: absolute;
   top: 25px;
   right: 25px;
@@ -74,7 +74,7 @@
   font-weight: var( --font-weight-fallback-font);
   font-size: var(--font-size-fallback-font);
   line-height: 100%;
-  letter-spacing: 0%;
+  letter-spacing: normal;
   text-transform: uppercase;
   opacity: 0.5;
   mix-blend-mode: hard-light;
@@ -103,11 +103,10 @@
 }
 
 /*карточки*/
-.article-grid {
+.ul-grid {
   display: grid;
-  gap: var(--grid-gap-cards);
+  gap: var(--ul-gap);
 }
-
 .card-title {
   background-color: var(--background-color);
   border: var(--border);
@@ -115,7 +114,7 @@
   font-variation-settings: 'wght' var(--font-weight-title, 715);
   font-size: var( --font-size-card);
   line-height: 100%;
-  letter-spacing: 0%;
+  letter-spacing: normal;
 }
 
 .card-text{
@@ -175,20 +174,17 @@
   width: 130px;
 }
 
-.at-the-moment {
-  margin-bottom: 50px;
-}
-
 .button__text {
   font-family: var(--fallback-font), Arial, sans-serif;
   font-size: var(--font-size-fallback-font);
   font-weight: var(--font-weight-fallback-font);
   font-size: var(--font-size-fallback-font);
   line-height: 90%;
-  letter-spacing: 0%;
+  letter-spacing: normal;
 }
 
 .save-button { /*кнопка "сохранить на память"*/
+  margin: 0 auto;
   display: flex;
   justify-content: center; 
   align-items: center;
@@ -196,8 +192,7 @@
   border: var(--border);
   padding: 16.5px 17px 13.5px 17px;
   gap: 8px;
-  margin: 0 auto;
- 
+   margin-top: 50px;
 }
 
 .floppy {
@@ -214,8 +209,8 @@ dialog:not([open]) {
 }
 
 dialog::backdrop { 
-  -webkit-backdrop-filter: brightness(25%);
-  backdrop-filter: brightness(25%);
+  background-color: #000000;
+  opacity: 75%;
 } 
 
 .dialog {
@@ -224,15 +219,19 @@ dialog::backdrop {
   justify-content: center;
   gap: 20px;
   padding: 28px;
-  max-width: 353px;
+  min-width: 353px;
 
 }
 
 .section-dialog {
   display: flex;
+  align-items: center;
   gap: 20px;
-  height: 63px;
+}
 
+.floppy-dialog {
+  width: 39px;
+  height: 39px;
 }
 
 .text-dialog {
@@ -241,16 +240,19 @@ dialog::backdrop {
   font-size: var(--font-size-fallback-font);
   line-height: 1.5;
   text-wrap: wrap;
-  letter-spacing: 0%;
+  letter-spacing: normal;
   text-transform: var(--text-transform-dialog);
   height: 100%;
+  max-width: 234px;
  }
 
 .dialog-button { /*кнопка Ок*/
   width: 100%;
+  text-transform: uppercase;
+  display: flex;
   align-items: center;
+  justify-content: center;
   block-size: 38px;
-  padding: 10.5px 130.5px 10.5px 130.5px;
   border: var(--outline-button);
   background-color: var(--background-color);
 }
@@ -295,7 +297,6 @@ filter: sepia(0.5) contrast(2) brightness(100%);
   position: relative;
   overflow: hidden;
   background-color: var(--background-color);
-  transition: transform 0.5s ease-in-out, box-shadow 0.3s ease;
   background-color: white;
 }
 
@@ -348,6 +349,10 @@ filter: sepia(0.5) contrast(2) brightness(100%);
     max-inline-size: 700px;
   }
 
+  .dialog {
+  min-width: 341px;
+  }
+
    .save-button {
   display: grid;
   justify-content: center; 
@@ -358,9 +363,8 @@ filter: sepia(0.5) contrast(2) brightness(100%);
   block-size: 85px;
 }
 
-.card-title-about-zero-sprint {
-  min-height: 55px;
-  line-height: 22px;
+.text-dialog {
+  margin-right: -32px;
 }
 
 .floppy {
@@ -371,11 +375,7 @@ filter: sepia(0.5) contrast(2) brightness(100%);
 }
 
  .dialog {
-    padding-inline-start: 32px;
-    padding-inline-end: 32px;
+    padding: 30px 40px 30px 40px;
   }
 
-  .dialog-button {
-    min-inline-size: 293px;
-  }
 }

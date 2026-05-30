@@ -19,7 +19,7 @@
     --margin-bottom-header: 100px;
 
     /*отступы между карточками*/
-    --grid-gap-cards: 50px;/*clamp(3.125rem, 3.081rem + 0.1878vw, 3.25rem);*/
+    --ul-gap: 50px;
 
     /*вариативный основной шрифт*/
     --variable-font: 'Inter';
